@@ -1,0 +1,20 @@
+.playlist-item-buttons-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.playlist-item {
+
+}
+
+.playlist-item:hover {
+  background-color: lightgray;
+}
+
+.selected-playlist-item {
+  background-color: lightgreen;
+}
+
+.playlist-item-button {
+  color: gray
+}
