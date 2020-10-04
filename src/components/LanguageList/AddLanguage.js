@@ -15,19 +15,21 @@ function AddLanguage({ show, handleClose }) {
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <Form.Group controlId='formBasicLanguage'>
-            <Form.Label>Language:</Form.Label>
-            <Form.Control type='language' placeholder='Enter language name' />
-            <Form.Text className='text-muted'>
-              Add a language category.
-            </Form.Text>
+          <Form.Group controlId='language'>
+            <Form.Label>Language Name</Form.Label>
+            <Form.Control type='text' placeholder='Enter language name' />
           </Form.Group>
-          <Button variant='secondary' onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button variant='primary' onClick={handleClose}>
-            Add
-          </Button>
+          <Form.Group>
+            <Form.File id='audio' label='Audio File' />
+          </Form.Group>
+          <Form.Group>
+            <Button variant='secondary' onClick={handleClose}>
+              Cancel
+            </Button>
+            <Button variant='primary' onClick={handleClose}>
+              Add
+            </Button>
+          </Form.Group>
         </Form>
       </Modal.Body>
     </Modal>
