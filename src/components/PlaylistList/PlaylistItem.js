@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { Button, Card, Row, Col } from 'react-bootstrap';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { Button, Row, Col, Dropdown } from 'react-bootstrap';
+import { FaEdit, FaTrash, FaBars } from 'react-icons/fa';
 import swal from 'sweetalert';
 
 // Redux
@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import './PlaylistList.css';
 
 // Custom Components
-import EditPlaylist from '../EditPlaylist/EditPlaylist';
+import EditPlaylist from '../Edit/EditPlaylist';
 
 function PlaylistItem({
   playlist,
@@ -61,30 +61,32 @@ function PlaylistItem({
     <>
       <Draggable draggableId={`id-${playlist.id}`} index={index}>
         {(provided) => (
-          <Card
+          <div
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             className={
               selectedPlaylist.id === playlist.id
-                ? 'selected-playlist-item'
-                : 'playlist-item'
+                ? 'selected-listed-item'
+                : 'listed-item'
             }
           >
+            <Dropdown.Divider />
             <Row onClick={handleSelect}>
-              <Col>
-                <Card.Title>{playlist.title}</Card.Title>
+              <Col className='listed-item-start-container'>
+                <FaBars className='dnd-bars-icon' />
+                <h5>{playlist.title}</h5>
               </Col>
-              <Col className='playlist-item-buttons-container'>
+              <Col className='listed-item-buttons-container'>
                 <Button
-                  className='playlist-item-button'
+                  className='listed-item-button'
                   variant='link'
                   onClick={handleEdit}
                 >
                   <FaEdit />
                 </Button>
                 <Button
-                  className='playlist-item-button'
+                  className='listed-item-button'
                   variant='link'
                   onClick={handleDelete}
                 >
@@ -92,7 +94,8 @@ function PlaylistItem({
                 </Button>
               </Col>
             </Row>
-          </Card>
+            <Dropdown.Divider />
+          </div>
         )}
       </Draggable>
       <EditPlaylist
@@ -113,7 +116,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setSelectedPlaylist: (playlist) =>
-      dispatch({ type: 'SET_SELECTEDTOPIC', payload: playlist }),
+      dispatch({ type: 'SET_SELECTEDPLAYLIST', payload: playlist }),
   };
 };
 

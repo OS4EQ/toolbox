@@ -7,7 +7,7 @@ import { Row, Col } from 'react-bootstrap';
 
 // Custom Components
 import TopicList from '../TopicList/TopicList';
-import ShowTopic from '../ShowTopic/ShowTopic';
+import ShowTopic from '../Show/ShowTopic';
 import LanguageList from '../LanguageList/LanguageList';
 
 function TopicView(props) {

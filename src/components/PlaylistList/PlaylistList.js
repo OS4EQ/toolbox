@@ -5,11 +5,12 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 // Redux
 
 // Style
-import './PlaylistList.css';
+import '../../App.css';
 
 // Custom Components
+import reorder from '../Shared/reorder';
 import PlaylistItem from './PlaylistItem';
-import CreatePlaylist from '../CreatePlaylist/CreatePlaylist';
+import CreatePlaylist from '../Create/CreatePlaylist';
 
 const initial = [
   {
@@ -56,14 +57,6 @@ const initial = [
   },
 ];
 
-const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  return result;
-};
-
 const PlaylistListMemo = React.memo(function PlaylistListMemo({ playlists }) {
   return playlists.map((playlist, index) => (
     <PlaylistItem playlist={playlist} index={index} key={`id${playlist.id}`} />
@@ -102,7 +95,7 @@ function PlaylistList() {
   };
 
   return (
-    <Card>
+    <Card className='layout-card'>
       <Card.Title>Playlists</Card.Title>
       <Card.Body>
         <Card>

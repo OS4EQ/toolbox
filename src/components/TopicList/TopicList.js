@@ -10,7 +10,7 @@ import './TopicList.css';
 // Custom Components
 import reorder from '../Shared/reorder';
 import TopicItem from './TopicItem';
-import CreateTopic from '../CreateTopic/CreateTopic';
+import CreateTopic from '../Create/CreateTopic';
 
 const initial = [
   {
@@ -95,7 +95,7 @@ function TopicList() {
   };
 
   return (
-    <Card>
+    <Card className='layout-card'>
       <Card.Title>Topics</Card.Title>
       <Card.Body>
         <Card>

@@ -5,7 +5,7 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 // Redux
 
 // Style
-import './LanguageList.css';
+import '../../App.css';
 
 // Custom Components
 import reorder from '../Shared/reorder';
@@ -73,7 +73,7 @@ function LanguageList() {
   };
 
   return (
-    <Card>
+    <Card className='layout-card'>
       <Card.Title>Languages</Card.Title>
       <Card.Body>
         <Card>
@@ -84,7 +84,11 @@ function LanguageList() {
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId='list'>
             {(provided) => (
-              <div ref={provided.innerRef} {...provided.droppableProps}>
+              <div
+                className='dnd-list'
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
                 <LanguageListMemo languages={languages} />
                 {provided.placeholder}
               </div>

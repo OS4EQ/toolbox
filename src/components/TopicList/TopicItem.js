@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { Button, Card, Row, Col } from 'react-bootstrap';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaBars } from 'react-icons/fa';
 import swal from 'sweetalert';
 
 // Redux
@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import './TopicList.css';
 
 // Custom Components
-import EditTopic from '../EditTopic/EditTopic';
+import EditTopic from '../Edit/EditTopic';
 
 function TopicItem({ topic, index, setSelectedTopic, selectedTopic }) {
   const [showEditTopic, setShowEditTopic] = useState(false);
@@ -56,30 +56,31 @@ function TopicItem({ topic, index, setSelectedTopic, selectedTopic }) {
     <>
       <Draggable draggableId={`id-${topic.id}`} index={index}>
         {(provided) => (
-          <Card
+          <div
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             className={
               selectedTopic.id === topic.id
-                ? 'selected-topic-item'
-                : 'topic-item'
+                ? 'selected-listed-item'
+                : 'listed-item'
             }
           >
             <Row onClick={handleSelect}>
-              <Col>
-                <Card.Title>{topic.title}</Card.Title>
+              <Col className='listed-item-start-container'>
+                <FaBars className='dnd-bars-icon' />
+                <h5>{topic.title}</h5>
               </Col>
-              <Col className='topic-item-buttons-container'>
+              <Col className='listed-item-buttons-container'>
                 <Button
-                  className='topic-item-button'
+                  className='listed-item-button'
                   variant='link'
                   onClick={handleEdit}
                 >
                   <FaEdit />
                 </Button>
                 <Button
-                  className='topic-item-button'
+                  className='listed-item-button'
                   variant='link'
                   onClick={handleDelete}
                 >
@@ -87,7 +88,7 @@ function TopicItem({ topic, index, setSelectedTopic, selectedTopic }) {
                 </Button>
               </Col>
             </Row>
-          </Card>
+          </div>
         )}
       </Draggable>
       <EditTopic
