@@ -1,0 +1,110 @@
+import React, { useState } from 'react';
+import { Card, Row, Col, Button } from 'react-bootstrap';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+
+// Redux
+
+// Style
+import './LanguageList.css';
+
+// Custom Components
+import AddLanguage from './AddLanguage';
+import LanguageItem from './LanguageItem';
+
+const initial = [
+  {
+    id: 9,
+    name: 'English',
+  },
+  {
+    id: 6,
+    name: 'Mandarin',
+  },
+  {
+    id: 53,
+    name: 'French',
+  },
+  {
+    id: 5,
+    name: 'Cantonese',
+  },
+  {
+    id: 8,
+    name: 'Spanish',
+  },
+];
+
+const reorder = (list, startIndex, endIndex) => {
+  const result = Array.from(list);
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+
+  return result;
+};
+
+const LanguageListMemo = React.memo(function LanguageListMemo({ languages }) {
+  return languages.map((language, index) => (
+    <LanguageItem language={language} index={index} key={`id${language.id}`} />
+  ));
+});
+
+function LanguageList() {
+  const [showAddLanguage, setShowAddLanguage] = useState(false);
+  const [languages, setLanguages] = useState(initial);
+
+  function onDragEnd(result) {
+    if (!result.destination) {
+      return;
+    }
+
+    if (result.destination.index === result.source.index) {
+      return;
+    }
+
+    const reorderedLanguages = reorder(
+      languages,
+      result.source.index,
+      result.destination.index
+    );
+
+    setLanguages(reorderedLanguages);
+    console.log(reorderedLanguages);
+  }
+
+  const handleAdd = () => {
+    setShowAddLanguage(true);
+  };
+
+  const handleCloseAddLanguage = () => {
+    setShowAddLanguage(false);
+  };
+
+  return (
+    <Card>
+      <Card.Title>Languages</Card.Title>
+      <Card.Body>
+        <Card>
+          <Button onClick={handleAdd} block>
+            Add Language +
+          </Button>
+        </Card>
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable droppableId='list'>
+            {(provided) => (
+              <div ref={provided.innerRef} {...provided.droppableProps}>
+                <LanguageListMemo languages={languages} />
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+        <AddLanguage
+          show={showAddLanguage}
+          handleClose={handleCloseAddLanguage}
+        />
+      </Card.Body>
+    </Card>
+  );
+}
+
+export default LanguageList;

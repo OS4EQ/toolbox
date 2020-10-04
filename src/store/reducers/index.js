@@ -3,6 +3,8 @@ import { combineReducers } from 'redux';
 // different reducer files
 import initialState from './initialState';
 import userReducer from './userReducer';
+import topicReducer from './topicReducer';
+import languageReducer from './languageReducer';
 
 const rootReducer = (state, action) => {
   let newState = state;
@@ -16,6 +18,8 @@ const rootReducer = (state, action) => {
 
 const appReducer = combineReducers({
   user: userReducer,
+  topic: topicReducer,
+  language: languageReducer,
 });
 
 export default rootReducer;

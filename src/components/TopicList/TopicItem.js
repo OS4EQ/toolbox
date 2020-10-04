@@ -5,6 +5,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import swal from 'sweetalert';
 
 // Redux
+import { connect } from 'react-redux';
 
 // Style
 import './TopicList.css';
@@ -12,15 +13,20 @@ import './TopicList.css';
 // Custom Components
 import EditTopic from '../EditTopic/EditTopic';
 
-function TopicItem({ topic, index }) {
-  const [editTopicShow, setEditTopicShow] = useState(false);
+function TopicItem({ topic, index, setSelectedTopic, selectedTopic }) {
+  const [showEditTopic, setShowEditTopic] = useState(false);
+
+  const handleSelect = (e) => {
+    e.preventDefault();
+    setSelectedTopic(topic);
+  };
 
   const handleEdit = () => {
-    setEditTopicShow(true);
+    setShowEditTopic(true);
   };
 
   const handleCloseEditTopic = () => {
-    setEditTopicShow(false);
+    setShowEditTopic(false);
   };
 
   const deleteTopic = () => {
@@ -54,16 +60,29 @@ function TopicItem({ topic, index }) {
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
+            className={
+              selectedTopic.id === topic.id
+                ? 'selected-topic-item'
+                : 'topic-item'
+            }
           >
-            <Row>
+            <Row onClick={handleSelect}>
               <Col>
                 <Card.Title>{topic.title}</Card.Title>
               </Col>
               <Col className='topic-item-buttons-container'>
-                <Button variant='light' onClick={handleEdit}>
+                <Button
+                  className='topic-item-button'
+                  variant='link'
+                  onClick={handleEdit}
+                >
                   <FaEdit />
                 </Button>
-                <Button variant='light' onClick={handleDelete}>
+                <Button
+                  className='topic-item-button'
+                  variant='link'
+                  onClick={handleDelete}
+                >
                   <FaTrash />
                 </Button>
               </Col>
@@ -72,7 +91,7 @@ function TopicItem({ topic, index }) {
         )}
       </Draggable>
       <EditTopic
-        show={editTopicShow}
+        show={showEditTopic}
         handleClose={handleCloseEditTopic}
         topic={topic}
       />
@@ -80,4 +99,17 @@ function TopicItem({ topic, index }) {
   );
 }
 
-export default TopicItem;
+const mapStateToProps = (state) => {
+  return {
+    selectedTopic: state.topic.selectedTopic,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setSelectedTopic: (topic) =>
+      dispatch({ type: 'SET_SELECTEDTOPIC', payload: topic }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopicItem);

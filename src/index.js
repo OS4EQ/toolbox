@@ -1,12 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-} from 'react-router-dom';
-import AppStateProvider from './state';
+import { BrowserRouter as Router } from 'react-router-dom';
 import dotenv from 'dotenv';
 
 // Redux
@@ -25,10 +19,12 @@ import App from './App';
 require('dotenv').config();
 
 ReactDOM.render(
-  <Router>
-    <AppStateProvider>
-      <App />
-    </AppStateProvider>
-  </Router>,
+  <Provider store={store}>
+    <PersistGate persistor={persistor} loading={null}>
+      <Router>
+        <App />
+      </Router>
+    </PersistGate>
+  </Provider>,
   document.getElementById('root')
 );

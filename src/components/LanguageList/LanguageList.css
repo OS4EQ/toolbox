@@ -1,16 +1,16 @@
-.topic-item-buttons-container {
+.language-item-buttons-container {
   display: flex;
   justify-content: flex-end;
 }
 
-.topic-item {
+.language-item {
 
 }
 
-.selected-topic-item {
+.selected-language-item {
   background-color: lightgreen;
 }
 
-.topic-item-button {
+.language-item-button {
   color: gray
 }
