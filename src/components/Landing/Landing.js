@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 // Redux
-import { connect } from 'react-redux';
 
 // Theme
-import { makeStyles } from '@material-ui/core/styles';
 
 // Custom Components
 
-const useStyles = makeStyles((theme) => ({}));
-
 function Landing(props) {
-  const classes = useStyles();
 
   return (
     <>
@@ -20,10 +15,4 @@ function Landing(props) {
   );
 }
 
-const mapStateToProps = (state) => ({});
-
-function mapDispatchToProps(dispatch) {
-  return {};
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Landing);
+export default Landing;
