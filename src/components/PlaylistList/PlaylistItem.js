@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { Button, Card, Row, Col } from 'react-bootstrap';
+import { Button, Row, Col, Dropdown } from 'react-bootstrap';
 import { FaEdit, FaTrash, FaBars } from 'react-icons/fa';
 import swal from 'sweetalert';
 
@@ -8,68 +8,74 @@ import swal from 'sweetalert';
 import { connect } from 'react-redux';
 
 // Style
-import './TopicList.css';
+import './PlaylistList.css';
 
 // Custom Components
-import EditTopic from '../Edit/EditTopic';
+import EditPlaylist from '../Edit/EditPlaylist';
 
-function TopicItem({ topic, index, setSelectedTopic, selectedTopic }) {
-  const [showEditTopic, setShowEditTopic] = useState(false);
+function PlaylistItem({
+  playlist,
+  index,
+  setSelectedPlaylist,
+  selectedPlaylist,
+}) {
+  const [showEditPlaylist, setShowEditPlaylist] = useState(false);
 
   const handleSelect = (e) => {
     e.preventDefault();
-    setSelectedTopic(topic);
+    setSelectedPlaylist(playlist);
   };
 
   const handleEdit = () => {
-    setShowEditTopic(true);
+    setShowEditPlaylist(true);
   };
 
-  const handleCloseEditTopic = () => {
-    setShowEditTopic(false);
+  const handleCloseEditPlaylist = () => {
+    setShowEditPlaylist(false);
   };
 
-  const deleteTopic = () => {
+  const deletePlaylist = () => {
     console.log('Woooah actually deleting this');
-    swal('Poof! Your topic has been deleted!', {
+    swal('Poof! Your playlist has been deleted!', {
       icon: 'success',
     });
   };
 
   const handleDelete = () => {
     swal({
-      title: `Are you sure you want to delete topic: ${topic.title}?`,
-      text: 'You will not be able to recover this topic!',
+      title: `Are you sure you want to delete playlist: ${playlist.title}?`,
+      text: 'You will not be able to recover this playlist!',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        deleteTopic();
+        deletePlaylist();
       } else {
-        swal('Your topic is safe!');
+        swal('Your playlist is safe!');
       }
     });
   };
 
   return (
     <>
-      <Draggable draggableId={`id-${topic.id}`} index={index}>
+      <Draggable draggableId={`id-${playlist.id}`} index={index}>
         {(provided) => (
           <div
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             className={
-              selectedTopic.id === topic.id
+              selectedPlaylist.id === playlist.id
                 ? 'selected-listed-item'
                 : 'listed-item'
             }
           >
+            <Dropdown.Divider />
             <Row onClick={handleSelect}>
               <Col className='listed-item-start-container'>
                 <FaBars className='dnd-bars-icon' />
-                <h5>{topic.title}</h5>
+                <h5>{playlist.title}</h5>
               </Col>
               <Col className='listed-item-buttons-container'>
                 <Button
@@ -88,13 +94,14 @@ function TopicItem({ topic, index, setSelectedTopic, selectedTopic }) {
                 </Button>
               </Col>
             </Row>
+            <Dropdown.Divider />
           </div>
         )}
       </Draggable>
-      <EditTopic
-        show={showEditTopic}
-        handleClose={handleCloseEditTopic}
-        topic={topic}
+      <EditPlaylist
+        show={showEditPlaylist}
+        handleClose={handleCloseEditPlaylist}
+        playlist={playlist}
       />
     </>
   );
@@ -102,15 +109,15 @@ function TopicItem({ topic, index, setSelectedTopic, selectedTopic }) {
 
 const mapStateToProps = (state) => {
   return {
-    selectedTopic: state.topic.selectedTopic,
+    selectedPlaylist: state.playlist.selectedPlaylist,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setSelectedTopic: (topic) =>
-      dispatch({ type: 'SET_SELECTEDTOPIC', payload: topic }),
+    setSelectedPlaylist: (playlist) =>
+      dispatch({ type: 'SET_SELECTEDPLAYLIST', payload: playlist }),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopicItem);
+export default connect(mapStateToProps, mapDispatchToProps)(PlaylistItem);

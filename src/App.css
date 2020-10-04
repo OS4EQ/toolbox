@@ -1,0 +1,51 @@
+.dropdown-divider {
+  margin: 0;
+}
+
+.dnd-bars-icon {
+  color: darkgray;
+  margin: 5px;
+}
+
+.listed-item-buttons-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.listed-item-start-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+
+.listed-item {
+  
+}
+
+.listed-item:hover {
+  background-color: lightgray;
+}
+
+.selected-listed-item {
+  background-color: lightblue;
+}
+
+.listed-item-button {
+  color: gray
+}
+
+.layout-card {
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.button {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+/* .card:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+} */

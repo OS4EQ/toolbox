@@ -6,24 +6,24 @@ import { Row, Col } from 'react-bootstrap';
 // Style
 
 // Custom Components
-import TopicList from '../TopicList/TopicList';
-import ShowTopic from '../Show/ShowTopic';
+import PlaylistList from '../PlaylistList/PlaylistList';
+import ShowPlaylist from '../Show/ShowPlaylist';
 import LanguageList from '../LanguageList/LanguageList';
 
-function TopicView(props) {
+function PlaylistView(props) {
   return (
     <Row>
       <Col>
         <LanguageList />
       </Col>
       <Col>
-        <TopicList />
+        <PlaylistList />
       </Col>
       <Col>
-        <ShowTopic />
+        <ShowPlaylist />
       </Col>
     </Row>
   );
 }
 
-export default TopicView;
+export default PlaylistView;

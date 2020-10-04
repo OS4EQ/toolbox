@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { Button, Card, Row, Col } from 'react-bootstrap';
-import { FaTrash } from 'react-icons/fa';
+import { Button, Card, Row, Col, Dropdown } from 'react-bootstrap';
+import { FaTrash, FaBars } from 'react-icons/fa';
 import swal from 'sweetalert';
 
 // Redux
@@ -50,23 +50,25 @@ function LanguageItem({
     <>
       <Draggable draggableId={`id-${language.id}`} index={index}>
         {(provided) => (
-          <Card
+          <div
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             className={
               selectedLanguage.id === language.id
-                ? 'selected-language-item'
-                : 'language-item'
+                ? 'selected-listed-item'
+                : 'listed-item'
             }
           >
+            <Dropdown.Divider />
             <Row onClick={handleSelect}>
-              <Col>
-                <Card.Title>{language.name}</Card.Title>
+              <Col className='listed-item-start-container'>
+                <FaBars className='dnd-bars-icon' />
+                <h5>{language.name}</h5>
               </Col>
-              <Col className='language-item-buttons-container'>
+              <Col className='listed-item-buttons-container'>
                 <Button
-                  className='language-item-button'
+                  className='listed-item-button'
                   variant='link'
                   onClick={handleDelete}
                 >
@@ -74,7 +76,8 @@ function LanguageItem({
                 </Button>
               </Col>
             </Row>
-          </Card>
+            <Dropdown.Divider />
+          </div>
         )}
       </Draggable>
     </>

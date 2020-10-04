@@ -8,15 +8,15 @@ import { connect } from 'react-redux';
 
 // Custom Components
 
-function ShowTopic({ selectedTopic }) {
-  const published = selectedTopic.published ? 'Yes' : 'No';
+function ShowPlaylist({ selectedPlaylist }) {
+  const published = selectedPlaylist.published ? 'Yes' : 'No';
 
   return (
-    <Card>
-      <Card.Title>{selectedTopic.title}</Card.Title>
+    <Card className='layout-card'>
+      <Card.Title>{selectedPlaylist.title}</Card.Title>
       <Card.Body>
-        <p>{selectedTopic.title}</p>
-        <p>{selectedTopic.id}</p>
+        <p>{selectedPlaylist.title}</p>
+        <p>{selectedPlaylist.id}</p>
         <p>{`Published? ${published}`}</p>
       </Card.Body>
       <Card.Footer>
@@ -28,8 +28,8 @@ function ShowTopic({ selectedTopic }) {
 
 const mapStateToProps = (state) => {
   return {
-    selectedTopic: state.topic.selectedTopic,
+    selectedPlaylist: state.playlist.selectedPlaylist,
   };
 };
 
-export default connect(mapStateToProps, null)(ShowTopic);
+export default connect(mapStateToProps, null)(ShowPlaylist);

@@ -9,6 +9,13 @@ const initialState = {
       title: 'No Topic Selected',
     },
   },
+  playlist: {
+    playlists: [],
+    selectedPlaylist: {
+      id: 0,
+      title: 'No Playlist Selected',
+    },
+  },
   language: {
     languages: [],
     selectedLanguage: {

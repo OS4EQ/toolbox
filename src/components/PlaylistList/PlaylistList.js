@@ -5,12 +5,12 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 // Redux
 
 // Style
-import './TopicList.css';
+import '../../App.css';
 
 // Custom Components
 import reorder from '../Shared/reorder';
-import TopicItem from './TopicItem';
-import CreateTopic from '../Create/CreateTopic';
+import PlaylistItem from './PlaylistItem';
+import CreatePlaylist from '../Create/CreatePlaylist';
 
 const initial = [
   {
@@ -57,15 +57,15 @@ const initial = [
   },
 ];
 
-const TopicListMemo = React.memo(function TopicListMemo({ topics }) {
-  return topics.map((topic, index) => (
-    <TopicItem topic={topic} index={index} key={`id${topic.id}`} />
+const PlaylistListMemo = React.memo(function PlaylistListMemo({ playlists }) {
+  return playlists.map((playlist, index) => (
+    <PlaylistItem playlist={playlist} index={index} key={`id${playlist.id}`} />
   ));
 });
 
-function TopicList() {
-  const [topics, setTopics] = useState(initial);
-  const [showCreateTopic, setShowCreateTopic] = useState(false);
+function PlaylistList() {
+  const [playlists, setPlaylists] = useState(initial);
+  const [showCreatePlaylist, setShowCreatePlaylist] = useState(false);
 
   function onDragEnd(result) {
     if (!result.destination) {
@@ -76,50 +76,50 @@ function TopicList() {
       return;
     }
 
-    const reorderedTopics = reorder(
-      topics,
+    const reorderedPlaylists = reorder(
+      playlists,
       result.source.index,
       result.destination.index
     );
 
-    setTopics(reorderedTopics);
-    console.log(reorderedTopics);
+    setPlaylists(reorderedPlaylists);
+    console.log(reorderedPlaylists);
   }
 
   const handleCreate = () => {
-    setShowCreateTopic(true);
+    setShowCreatePlaylist(true);
   };
 
-  const handleCloseCreateTopic = () => {
-    setShowCreateTopic(false);
+  const handleCloseCreatePlaylist = () => {
+    setShowCreatePlaylist(false);
   };
 
   return (
     <Card className='layout-card'>
-      <Card.Title>Topics</Card.Title>
+      <Card.Title>Playlists</Card.Title>
       <Card.Body>
         <Card>
           <Button onClick={handleCreate} block>
-            Create New Topic
+            Create New Playlist
           </Button>
         </Card>
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId='list'>
             {(provided) => (
               <div ref={provided.innerRef} {...provided.droppableProps}>
-                <TopicListMemo topics={topics} />
+                <PlaylistListMemo playlists={playlists} />
                 {provided.placeholder}
               </div>
             )}
           </Droppable>
         </DragDropContext>
-        <CreateTopic
-          show={showCreateTopic}
-          handleClose={handleCloseCreateTopic}
+        <CreatePlaylist
+          show={showCreatePlaylist}
+          handleClose={handleCloseCreatePlaylist}
         />
       </Card.Body>
     </Card>
   );
 }
 
-export default TopicList;
+export default PlaylistList;
