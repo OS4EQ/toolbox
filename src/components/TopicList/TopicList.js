@@ -8,6 +8,7 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import './TopicList.css';
 
 // Custom Components
+import reorder from '../Shared/reorder';
 import TopicItem from './TopicItem';
 import CreateTopic from '../CreateTopic/CreateTopic';
 
@@ -55,14 +56,6 @@ const initial = [
     published: true,
   },
 ];
-
-const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  return result;
-};
 
 const TopicListMemo = React.memo(function TopicListMemo({ topics }) {
   return topics.map((topic, index) => (

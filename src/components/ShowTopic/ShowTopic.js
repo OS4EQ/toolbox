@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, Form, Button, Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 
 // Redux
 import { connect } from 'react-redux';
@@ -19,6 +19,9 @@ function ShowTopic({ selectedTopic }) {
         <p>{selectedTopic.id}</p>
         <p>{`Published? ${published}`}</p>
       </Card.Body>
+      <Card.Footer>
+        <Button variant='primary'>Publish!</Button>
+      </Card.Footer>
     </Card>
   );
 }

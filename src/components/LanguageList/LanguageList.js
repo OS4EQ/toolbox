@@ -8,6 +8,7 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import './LanguageList.css';
 
 // Custom Components
+import reorder from '../Shared/reorder';
 import AddLanguage from './AddLanguage';
 import LanguageItem from './LanguageItem';
 
@@ -33,14 +34,6 @@ const initial = [
     name: 'Spanish',
   },
 ];
-
-const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  return result;
-};
 
 const LanguageListMemo = React.memo(function LanguageListMemo({ languages }) {
   return languages.map((language, index) => (
