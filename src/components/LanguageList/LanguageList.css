@@ -4,7 +4,11 @@
 }
 
 .language-item {
+  
+}
 
+.language-item:hover {
+  background-color: lightgray;
 }
 
 .selected-language-item {
