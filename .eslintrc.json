@@ -26,6 +26,7 @@
     "prefer-destructuring": "off",
     "prettier/prettier": ["error"],
     "eqeqeq": ["error", "smart"],
-    "import/order": "off"
+    "import/order": "off",
+    "react/jsx-props-no-spreading": "off"
   }
 }

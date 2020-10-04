@@ -12,16 +12,17 @@ import {
 
 // Custom Components
 import Landing from './components/Landing/Landing';
+import TopicList from './components/TopicList/TopicList';
 
 function App(props) {
-
   return (
-      <Switch>
-        <Route exact path='/' component={Landing} />
+    <Switch>
+      <Route exact path='/' component={Landing} />
+      <Route exact path='/testing' component={TopicList} />
 
-        {/* <PrivateRoute exact path='/dashboard' component={Dashboard} /> */}
-        <Redirect to='/' />
-      </Switch>
+      {/* <PrivateRoute exact path='/dashboard' component={Dashboard} /> */}
+      <Redirect to='/' />
+    </Switch>
   );
 }
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
 
 // Redux
 
@@ -7,10 +8,10 @@ import React, { useEffect, useState } from 'react';
 // Custom Components
 
 function Landing(props) {
-
   return (
     <>
       <p>Landing page</p>
+      <Button>hi</Button>
     </>
   );
 }
