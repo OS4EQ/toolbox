@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 // Redux
 
