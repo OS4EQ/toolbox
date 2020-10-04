@@ -30,10 +30,13 @@ function EditTopic({ show, handleClose, topic }) {
             <Form.Check type='checkbox' label='Check me out' />
           </Form.Group>
           <Button variant='secondary' onClick={handleClose}>
-            Close
+            Cancel
           </Button>
           <Button variant='primary' onClick={handleClose}>
-            Save Changes
+            Save
+          </Button>
+          <Button variant='primary' onClick={handleClose}>
+            Publish!
           </Button>
         </Form>
       </Modal.Body>
