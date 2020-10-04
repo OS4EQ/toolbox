@@ -37,14 +37,14 @@ const initial = [
     language: 'English',
     title: 'how r u?',
     audio_url: 'https://congregate.live',
-    published: true,
+    published: false,
   },
   {
     id: 9,
     language: 'English',
     title: 'im doin okay, wbu?',
     audio_url: 'https://congregate.live',
-    published: true,
+    published: false,
   },
   {
     id: 2,

@@ -9,12 +9,15 @@ import { connect } from 'react-redux';
 // Custom Components
 
 function ShowTopic({ selectedTopic }) {
+  const published = selectedTopic.published ? 'Yes' : 'No';
+
   return (
     <Card>
       <Card.Title>{selectedTopic.title}</Card.Title>
       <Card.Body>
         <p>{selectedTopic.title}</p>
         <p>{selectedTopic.id}</p>
+        <p>{`Published? ${published}`}</p>
       </Card.Body>
     </Card>
   );
