@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Card from 'react-bootstrap/Card';
+import { Card, Button } from 'react-bootstrap';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 // Redux
@@ -9,6 +9,7 @@ import './TopicList.css';
 
 // Custom Components
 import TopicItem from './TopicItem';
+import CreateTopic from '../CreateTopic/CreateTopic';
 
 const initial = [
   {
@@ -71,6 +72,7 @@ const TopicListMemo = React.memo(function TopicListMemo({ topics }) {
 
 function TopicList() {
   const [topics, setTopics] = useState(initial);
+  const [showCreateTopic, setShowCreateTopic] = useState(false);
 
   function onDragEnd(result) {
     if (!result.destination) {
@@ -91,10 +93,23 @@ function TopicList() {
     console.log(reorderedTopics);
   }
 
+  const handleCreate = () => {
+    setShowCreateTopic(true);
+  };
+
+  const handleCloseCreateTopic = () => {
+    setShowCreateTopic(false);
+  };
+
   return (
     <Card>
       <Card.Title>Topics</Card.Title>
       <Card.Body>
+        <Card>
+          <Button onClick={handleCreate} block>
+            Create New Topic
+          </Button>
+        </Card>
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId='list'>
             {(provided) => (
@@ -105,6 +120,10 @@ function TopicList() {
             )}
           </Droppable>
         </DragDropContext>
+        <CreateTopic
+          show={showCreateTopic}
+          handleClose={handleCloseCreateTopic}
+        />
       </Card.Body>
     </Card>
   );

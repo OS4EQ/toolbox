@@ -49,8 +49,8 @@ const LanguageListMemo = React.memo(function LanguageListMemo({ languages }) {
 });
 
 function LanguageList() {
-  const [showAddLanguage, setShowAddLanguage] = useState(false);
   const [languages, setLanguages] = useState(initial);
+  const [showAddLanguage, setShowAddLanguage] = useState(false);
 
   function onDragEnd(result) {
     if (!result.destination) {
