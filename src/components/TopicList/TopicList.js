@@ -1,6 +1,5 @@
 // Template for components
 import React, { useEffect, useState } from 'react';
-import { Button } from '@material-ui/core';
 
 // Redux
 
@@ -47,7 +46,7 @@ function TopicList(props) {
     console.log('clicked');
   };
 
-  return <Button onClick={handleClick}>Click me</Button>;
+  return <p>topic list page</p>;
 }
 
 export default TopicList;

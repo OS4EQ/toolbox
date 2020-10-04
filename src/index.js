@@ -22,14 +22,10 @@ import App from './App';
 require('dotenv').config();
 
 ReactDOM.render(
-  <Provider>
-    <PersistGate loading={null}>
-      <Router>
-        <AppStateProvider>
-          <App />
-        </AppStateProvider>
-      </Router>
-    </PersistGate>
-  </Provider>,
+  <Router>
+    <AppStateProvider>
+      <App />
+    </AppStateProvider>
+  </Router>,
   document.getElementById('root')
 );

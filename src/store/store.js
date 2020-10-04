@@ -6,7 +6,7 @@ import rootReducer from './reducers/index';
 
 // Redux Middleware
 import thunk from 'redux-thunk';
-import socketMiddleware from './middleware/socketMiddleware';
+// import socketMiddleware from './middleware/socketMiddleware';
 
 // Redux Persist
 import storage from 'redux-persist/lib/storage'; // defaults to sessionStorage for web
@@ -23,9 +23,14 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 // set up Redux store
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-let store = createStore(
+const store = createStore(
   persistedReducer,
-  composeEnhancers(applyMiddleware(thunk, socketMiddleware))
+  composeEnhancers(
+    applyMiddleware(
+      thunk
+      // socketMiddleware
+    )
+  )
 );
 const persistor = persistStore(store);
 
