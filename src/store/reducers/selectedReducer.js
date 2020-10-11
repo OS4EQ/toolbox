@@ -1,6 +1,6 @@
 import initialState from './initialState';
 
-export default function frontendReducer(state = initialState.frontend, action) {
+export default function selectedReducer(state = initialState.selected, action) {
   switch (action.type) {
     case 'SET_SELECTEDLANGUAGE':
       return {

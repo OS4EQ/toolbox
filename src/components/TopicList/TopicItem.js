@@ -102,7 +102,7 @@ function TopicItem({ topic, index, setSelectedTopic, selectedTopic }) {
 
 const mapStateToProps = (state) => {
   return {
-    selectedTopic: state.frontend.selectedTopic,
+    selectedTopic: state.selected.selectedTopic,
   };
 };
 

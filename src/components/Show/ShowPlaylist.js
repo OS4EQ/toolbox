@@ -28,7 +28,7 @@ function ShowPlaylist({ selectedPlaylist }) {
 
 const mapStateToProps = (state) => {
   return {
-    selectedPlaylist: state.frontend.selectedPlaylist,
+    selectedPlaylist: state.selected.selectedPlaylist,
   };
 };
 

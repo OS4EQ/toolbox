@@ -1,9 +1,6 @@
 // Redux Setup
 import { createStore, applyMiddleware, compose } from 'redux';
 
-// Apollo
-import apolloClient from './apollo';
-
 // Redux Reducer
 import rootReducer from './reducers/index';
 
@@ -22,10 +19,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 // set up Redux store
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(
-  persistedReducer,
-  composeEnhancers(applyMiddleware(apolloClient.middleware()))
-);
+const store = createStore(persistedReducer, composeEnhancers());
 const persistor = persistStore(store);
 
 export { persistor };

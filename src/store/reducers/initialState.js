@@ -2,7 +2,7 @@ const initialState = {
   user: {
     user: {},
   },
-  frontend: {
+  selected: {
     selectedTopic: {
       id: 0,
       title: 'No Topic Selected',
@@ -16,7 +16,6 @@ const initialState = {
       name: 'No Language Selected',
     },
   },
-  apollo: {},
 };
 
 export default initialState;

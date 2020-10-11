@@ -28,7 +28,7 @@ function ShowTopic({ selectedTopic }) {
 
 const mapStateToProps = (state) => {
   return {
-    selectedTopic: state.frontend.selectedTopic,
+    selectedTopic: state.selected.selectedTopic,
   };
 };
 

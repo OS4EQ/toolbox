@@ -1,12 +1,9 @@
 import { combineReducers } from 'redux';
 
-// Apollo
-import apolloClient from '../apollo';
-
 // different reducer files
 import initialState from './initialState';
 import userReducer from './userReducer';
-import frontendReducer from './frontendReducer';
+import selectedReducer from './selectedReducer';
 
 const rootReducer = (state, action) => {
   let newState = state;
@@ -20,9 +17,7 @@ const rootReducer = (state, action) => {
 
 const appReducer = combineReducers({
   user: userReducer,
-  frontend: frontendReducer,
-  apollo: apolloClient.reducer(),
-  // TODO
+  selected: selectedReducer,
 });
 
 export default rootReducer;
