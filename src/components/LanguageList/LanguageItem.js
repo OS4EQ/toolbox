@@ -86,7 +86,7 @@ function LanguageItem({
 
 const mapStateToProps = (state) => {
   return {
-    selectedLanguage: state.language.selectedLanguage,
+    selectedLanguage: state.frontend.selectedLanguage,
   };
 };
 

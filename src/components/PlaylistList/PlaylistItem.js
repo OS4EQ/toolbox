@@ -109,7 +109,7 @@ function PlaylistItem({
 
 const mapStateToProps = (state) => {
   return {
-    selectedPlaylist: state.playlist.selectedPlaylist,
+    selectedPlaylist: state.frontend.selectedPlaylist,
   };
 };
 
