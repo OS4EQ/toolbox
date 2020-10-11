@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import dotenv from 'dotenv';
 
 // Redux
 import store, { persistor } from './store/store';
-import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/es/integration/react';
+
+// Apollo
+{ ApolloProvider } from 'react-apollo';
+import apolloClient from'./store/apollo'
 
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,12 +21,12 @@ import App from './App';
 require('dotenv').config();
 
 ReactDOM.render(
-  <Provider store={store}>
+  <ApolloProvider store={store} client={apolloClient}>
     <PersistGate persistor={persistor} loading={null}>
       <Router>
         <App />
       </Router>
     </PersistGate>
-  </Provider>,
+    </ApolloProvider>,
   document.getElementById('root')
 );

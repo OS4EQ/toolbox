@@ -1,12 +1,11 @@
 // Redux Setup
 import { createStore, applyMiddleware, compose } from 'redux';
 
+// Apollo
+import apolloClient from './apollo';
+
 // Redux Reducer
 import rootReducer from './reducers/index';
-
-// Redux Middleware
-import thunk from 'redux-thunk';
-// import socketMiddleware from './middleware/socketMiddleware';
 
 // Redux Persist
 import storage from 'redux-persist/lib/storage'; // defaults to sessionStorage for web
@@ -25,12 +24,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   persistedReducer,
-  composeEnhancers(
-    applyMiddleware(
-      thunk
-      // socketMiddleware
-    )
-  )
+  composeEnhancers(applyMiddleware(apolloClient.middleware()))
 );
 const persistor = persistStore(store);
 

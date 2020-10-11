@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
 
+// Apollo
+import apolloClient from '../apollo';
+
 // different reducer files
 import initialState from './initialState';
 import userReducer from './userReducer';
-import topicReducer from './topicReducer';
-import playlistReducer from './playlistReducer';
-import languageReducer from './languageReducer';
+import frontendReducer from './frontendReducer';
 
 const rootReducer = (state, action) => {
   let newState = state;
@@ -19,9 +20,9 @@ const rootReducer = (state, action) => {
 
 const appReducer = combineReducers({
   user: userReducer,
-  topic: topicReducer,
-  language: languageReducer,
-  playlist: playlistReducer,
+  frontend: frontendReducer,
+  apollo: apolloClient.reducer(),
+  // TODO
 });
 
 export default rootReducer;
