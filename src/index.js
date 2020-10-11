@@ -7,8 +7,8 @@ import store, { persistor } from './store/store';
 import { PersistGate } from 'redux-persist/es/integration/react';
 
 // Apollo
-{ ApolloProvider } from 'react-apollo';
-import apolloClient from'./store/apollo'
+import { ApolloProvider } from 'react-apollo';
+import apolloClient from './store/apollo';
 
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -27,6 +27,6 @@ ReactDOM.render(
         <App />
       </Router>
     </PersistGate>
-    </ApolloProvider>,
+  </ApolloProvider>,
   document.getElementById('root')
 );
