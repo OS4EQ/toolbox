@@ -3,9 +3,7 @@ import { combineReducers } from 'redux';
 // different reducer files
 import initialState from './initialState';
 import userReducer from './userReducer';
-import topicReducer from './topicReducer';
-import playlistReducer from './playlistReducer';
-import languageReducer from './languageReducer';
+import selectedReducer from './selectedReducer';
 
 const rootReducer = (state, action) => {
   let newState = state;
@@ -19,9 +17,7 @@ const rootReducer = (state, action) => {
 
 const appReducer = combineReducers({
   user: userReducer,
-  topic: topicReducer,
-  language: languageReducer,
-  playlist: playlistReducer,
+  selected: selectedReducer,
 });
 
 export default rootReducer;
