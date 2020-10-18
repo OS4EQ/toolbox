@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
-
+import NavBar from '../../components/NavBar/NavBar.js'
 // Redux
 
 // Style
@@ -12,17 +12,20 @@ import LanguageList from '../LanguageList/LanguageList';
 
 function PlaylistView(props) {
   return (
-    <Row>
-      <Col>
-        <LanguageList />
-      </Col>
-      <Col>
-        <PlaylistList />
-      </Col>
-      <Col>
-        <ShowPlaylist />
-      </Col>
-    </Row>
+    <div>
+      <NavBar />
+      <Row>
+        <Col>
+          <LanguageList />
+        </Col>
+        <Col>
+          <PlaylistList />
+        </Col>
+        <Col>
+          <ShowPlaylist />
+        </Col>
+      </Row>
+    </div>
   );
 }
 
