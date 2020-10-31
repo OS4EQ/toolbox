@@ -1,0 +1,59 @@
+import React from 'react';
+import { gql } from 'apollo-boost';
+import { useMutation } from 'react-apollo';
+// import Language from '../components/Language/Language';
+
+const CREATE_TRACK = gql`
+  mutation createTrack($input: TrackInput!) {
+    createTrack(input: $input) {
+      ok
+      track {
+        index
+      }
+    }
+  }
+`;
+
+const CreateTrack = () => {
+  let index;
+  let title;
+  let audioUrl;
+  let transcript;
+  let duration;
+  let active;
+  let published;
+  const [createTrack] = useMutation(CREATE_TRACK);
+  return (
+    <div>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          createTrack({
+            variables: {
+              input: {
+                index: index.value,
+                title: title.value,
+                audioUrl: audioUrl.value,
+                transcript: transcript.value,
+                duration: duration.value,
+                active: active.value,
+                published: published.value,
+              },
+            },
+          });
+        }}
+      >
+        <input ref={(value) => (index = value)} id='index' />
+        <input ref={(value) => (title = value)} id='title' />
+        <input ref={(value) => (audioUrl = value)} id='audioUrl' />
+        <input ref={(value) => (transcript = value)} id='transcript' />
+        <input ref={(value) => (duration = value)} id='duration' />
+        <input ref={(value) => (active = value)} id='active' />
+        <input ref={(value) => (published = value)} id='published' />
+        <button type='submit'> Create Track</button>
+      </form>
+    </div>
+  );
+};
+
+export default CreateTrack;
