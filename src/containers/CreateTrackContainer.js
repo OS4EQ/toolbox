@@ -25,6 +25,7 @@ const CreateTrack = () => {
   const [createTrack] = useMutation(CREATE_TRACK);
   return (
     <div>
+      <h3>Create Track</h3>
       <form
         onSubmit={(e) => {
           e.preventDefault();

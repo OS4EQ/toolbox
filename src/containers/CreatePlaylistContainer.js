@@ -23,6 +23,7 @@ const CreatePlaylist = () => {
   const [createPlaylist] = useMutation(CREATE_PLAYLIST);
   return (
     <div>
+      <h3>Create Playlist</h3>
       <form
         onSubmit={(e) => {
           e.preventDefault();

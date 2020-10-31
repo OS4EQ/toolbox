@@ -24,6 +24,7 @@ const CreateTopic = () => {
   const [createTopic] = useMutation(CREATE_TOPIC);
   return (
     <div>
+      <h3>Create Topic</h3>
       <form
         onSubmit={(e) => {
           e.preventDefault();

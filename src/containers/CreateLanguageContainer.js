@@ -20,6 +20,7 @@ const CreateLanguage = () => {
   const [createLanguage] = useMutation(CREATE_LANGUAGE);
   return (
     <div>
+      <h3>Create Language</h3>
       <form
         onSubmit={(e) => {
           e.preventDefault();
