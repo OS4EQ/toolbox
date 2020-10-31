@@ -44,13 +44,13 @@ const CreateTrack = () => {
           });
         }}
       >
-        <input ref={(value) => (index = value)} id='index' />
-        <input ref={(value) => (title = value)} id='title' />
-        <input ref={(value) => (audioUrl = value)} id='audioUrl' />
-        <input ref={(value) => (transcript = value)} id='transcript' />
-        <input ref={(value) => (duration = value)} id='duration' />
-        <input ref={(value) => (active = value)} id='active' />
-        <input ref={(value) => (published = value)} id='published' />
+        <input ref={(value) => (index = value)} id='index' placeholder='index' />
+        <input ref={(value) => (title = value)} id='title' placeholder='title' />
+        <input ref={(value) => (audioUrl = value)} id='audioUrl' placeholder='audioUrl' />
+        <input ref={(value) => (transcript = value)} id='transcript' placeholder='transcript' />
+        <input ref={(value) => (duration = value)} id='duration' placeholder='duration' />
+        <input ref={(value) => (active = value)} id='active' placeholder='active' />
+        <input ref={(value) => (published = value)} id='published' placeholder='published' />
         <button type='submit'> Create Track</button>
       </form>
     </div>

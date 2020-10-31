@@ -35,9 +35,17 @@ const CreateLanguage = () => {
           });
         }}
       >
-        <input ref={(value) => (name = value)} id='name' />
-        <input ref={(value) => (audioUrl = value)} id='audioUrl' />
-        <input ref={(value) => (published = value)} id='published' />
+        <input ref={(value) => (name = value)} id='name' placeholder='name' />
+        <input
+          ref={(value) => (audioUrl = value)}
+          id='audioUrl'
+          placeholder='audioUrl'
+        />
+        <input
+          ref={(value) => (published = value)}
+          id='published'
+          placeholder='published'
+        />
         <button type='submit'> Create Language</button>
       </form>
     </div>

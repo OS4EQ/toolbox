@@ -41,12 +41,36 @@ const CreatePlaylist = () => {
           });
         }}
       >
-        <input ref={(value) => (index = value)} id='index' />
-        <input ref={(value) => (title = value)} id='title' />
-        <input ref={(value) => (audioUrl = value)} id='audioUrl' />
-        <input ref={(value) => (active = value)} id='active' />
-        <input ref={(value) => (published = value)} id='published' />
-        <input ref={(value) => (tracks = value)} id='tracks' />
+        <input
+          ref={(value) => (index = value)}
+          id='index'
+          placeholder='index'
+        />
+        <input
+          ref={(value) => (title = value)}
+          id='title'
+          placeholder='title'
+        />
+        <input
+          ref={(value) => (audioUrl = value)}
+          id='audioUrl'
+          placeholder='audioUrl'
+        />
+        <input
+          ref={(value) => (active = value)}
+          id='active'
+          placeholder='active'
+        />
+        <input
+          ref={(value) => (published = value)}
+          id='published'
+          placeholder='published'
+        />
+        <input
+          ref={(value) => (tracks = value)}
+          id='tracks'
+          placeholder='tracks'
+        />
         <button type='submit'> Create Playlist</button>
       </form>
     </div>
