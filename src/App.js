@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 // Style
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 // Redux
 
 // Custom Components
@@ -18,6 +18,8 @@ import Testing from './components/Testing/Testing';
 import InfoView from './components/InfoView/InfoView';
 import CreateView from './components/CreateView/CreateView';
 import UpdateView from './components/UpdateView/UpdateView';
+import Login from './components/Login/Login';
+import RegisterView from './components/RegisterView/RegisterView';
 
 function App(props) {
   return (
@@ -29,6 +31,8 @@ function App(props) {
       <Route exact path='/info' component={InfoView} />
       <Route exact path='/create' component={CreateView} />
       <Route exact path='/update' component={UpdateView} />
+      <Route exact path='/login' component={Login} />
+      <Route exact path='/register' component={RegisterView} />
       {/* <PrivateRoute exact path='/dashboard' component={Dashboard} /> */}
       <Redirect to='/' />
     </Switch>
