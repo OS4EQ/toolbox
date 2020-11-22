@@ -4,6 +4,7 @@ import { gql } from 'apollo-boost';
 // Custom Components
 // import TracksInfo from './components/TracksInfo/TracksInfo';
 import Track from '../components/Track/Track';
+import UpdateTrack from '../containers/UpdateTrackContainer';
 
 const Tracks = () => (
   <Query
@@ -28,7 +29,10 @@ const Tracks = () => (
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
       return data.allTracks.map((currentTrack) => (
-        <Track track={currentTrack} />
+        <>
+          <Track track={currentTrack} />
+          <UpdateTrack track={currentTrack} />
+        </>
       ));
     }}
   </Query>

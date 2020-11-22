@@ -25,9 +25,9 @@ class NavBar extends Component {
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
         <Nav className='mr-auto'>
-          <Nav.Link href='/create'>Create</Nav.Link>
-          <Nav.Link href='/update'>Update</Nav.Link>
-          <Nav.Link href='/info'>View</Nav.Link>
+    { loggedIn === true && <Nav.Link href='/create'>Create</Nav.Link> }
+    { loggedIn === true && <Nav.Link href='/update'>Update</Nav.Link> }
+    { loggedIn === true && <Nav.Link href='/info'>View</Nav.Link> }
         </Nav>
         <Nav>
           {loggedIn === false && <Nav.Link href='/login'>Log In</Nav.Link>}

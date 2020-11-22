@@ -31,7 +31,7 @@ const UPDATE_TRACK = gql`
   }
 `;
 
-const UpdateTrack = () => {
+const UpdateTrack = (props) => {
   let id;
   let index;
   let title;
@@ -97,7 +97,7 @@ const UpdateTrack = () => {
           id='published'
           placeholder='published'
         />
-        <button type='submit'> Update Track</button>
+        <button type='submit'>Update Track</button>
       </form>
     </div>
   );
