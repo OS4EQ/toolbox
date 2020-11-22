@@ -1,9 +1,26 @@
-import React from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import React, { Component, useState } from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
+import { Route , withRouter} from 'react-router-dom';
 
-function Navigation(props) {
-  return (
-    <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
+class NavBar extends Component {
+  constructor(props) {
+    super(props)
+    this.logout = this.logout.bind(this)
+  }
+  state = {
+    loggedIn: (localStorage.getItem('AUTH_TOKEN') !== null) ? true: false
+  }
+  logout() {
+    localStorage.removeItem('AUTH_TOKEN');
+    localStorage.clear();
+    this.setState({ loggedIn: false });
+    this.props.history.push('/');
+  };
+  
+  render() {
+    let { loggedIn } = this.state;
+    return (
+      <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
       <Navbar.Brand href='/home'>Audiopedia.io</Navbar.Brand>
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
@@ -13,22 +30,12 @@ function Navigation(props) {
           <Nav.Link href='/info'>View</Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link href='/login'>Log In</Nav.Link>
-          <Nav.Link eventKey={2} href='#memes'>
-            Log Out
-          </Nav.Link>
+          {loggedIn === false && <Nav.Link href='/login'>Log In</Nav.Link>}
+          {loggedIn === true && <Nav.Link onClick={this.logout}>Log Out</Nav.Link>}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-  );
+    )
+  }
 }
-
-const NavBar = () => {
-  return (
-    <>
-      <Navigation />
-    </>
-  );
-};
-
-export default NavBar;
+export default withRouter(NavBar);

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Jumbotron, Button } from 'react-bootstrap';
 import NavBar from '../NavBar/NavBar';
+
 // Redux
 
 // Style
