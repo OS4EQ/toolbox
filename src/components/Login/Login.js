@@ -42,6 +42,9 @@ class Login extends Component {
               <Form.Control type="password" placeholder="Password" value={password}
             onChange={e => this.setState({ password: e.target.value })}/>
             </Form.Group>
+            <Form.Group>
+              <a href='register'> New user? Register here.</a>
+            </Form.Group>
             <Mutation
             mutation={ TOKEN_AUTH }
             variables={{ username, password }}

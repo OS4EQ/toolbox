@@ -37,11 +37,13 @@ class Register extends Component {
               <Form.Control type="text" placeholder="Enter username" value={username}
             onChange={e => this.setState({ username: e.target.value })}/>
             </Form.Group>
-
             <Form.Group controlId="password">
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" placeholder="Password" value={password}
             onChange={e => this.setState({ password: e.target.value })}/>
+            </Form.Group>
+            <Form.Group>
+              <a href='login'> Existing user? Log in here.</a>
             </Form.Group>
             <Mutation
             mutation={ CREATE_USER }
