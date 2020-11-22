@@ -19,7 +19,7 @@ import InfoView from './components/InfoView/InfoView';
 import CreateView from './components/CreateView/CreateView';
 import UpdateView from './components/UpdateView/UpdateView';
 import Login from './components/Login/Login';
-import RegisterView from './components/RegisterView/RegisterView';
+import Register from './components/Register/Register';
 
 function App(props) {
   return (
@@ -32,7 +32,7 @@ function App(props) {
       <Route exact path='/create' component={CreateView} />
       <Route exact path='/update' component={UpdateView} />
       <Route exact path='/login' component={Login} />
-      <Route exact path='/register' component={RegisterView} />
+      <Route exact path='/register' component={Register} />
       {/* <PrivateRoute exact path='/dashboard' component={Dashboard} /> */}
       <Redirect to='/' />
     </Switch>

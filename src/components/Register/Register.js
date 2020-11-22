@@ -3,19 +3,20 @@ import { gql } from 'apollo-boost';
 import { Mutation, useMutation } from 'react-apollo';
 import { Form, Button, Container } from 'react-bootstrap';
 import NavBar from '../NavBar/NavBar';
-import Composer from 'react-composer';
 
-
-const TOKEN_AUTH = gql`
-  mutation tokenAuth($username: String!, $password: String!) {
-    tokenAuth(username: $username, password: $password) {
-      token
-      payload
+const CREATE_USER = gql`
+  mutation createUser($password: String!, $username: String!) {
+    createUser(password: $password, username: $username) {
+      user {
+        id
+        username
+        password
+      }
     }
   }
 `;
 
-class Login extends Component {
+class Register extends Component {
   state = {
     username: '',
     password: '',
@@ -23,13 +24,13 @@ class Login extends Component {
   }
 
   render() {
-    let { username, password, token } = this.state;
+    let { username, password } = this.state;
 
     return (
       <div>
         <NavBar/>
         <Container>
-          <h4 class='mt-4'> Log In </h4>
+          <h4 class='mt-4'> Register </h4>
           <Form>
             <Form.Group controlId="login">
               <Form.Label>Username</Form.Label>
@@ -43,15 +44,15 @@ class Login extends Component {
             onChange={e => this.setState({ password: e.target.value })}/>
             </Form.Group>
             <Mutation
-            mutation={ TOKEN_AUTH }
-            variables={{ username, password }}
+            mutation={ CREATE_USER }
+            variables={{ password, username }}
             onCompleted={data =>
               this._confirm(data)
             }
           >
             {mutation => (
               <Button variant="primary" onClick={mutation}>
-                Log in
+                Register
               </Button>
             )}
           </Mutation>
@@ -62,15 +63,9 @@ class Login extends Component {
   }
 
   _confirm = async data => {
-    const token = data.tokenAuth.token;
-    this._saveUserData(token);
-    this.props.history.push(`/`);
-    console.log(token);
-  }
-
-  _saveUserData = token => {
-    sessionStorage.setItem('AUTH_TOKEN', token);
+    console.log(data);
+    this.props.history.push(`/login`);
   }
 }
 
-export default Login;
+export default Register;

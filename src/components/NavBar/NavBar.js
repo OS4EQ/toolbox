@@ -8,11 +8,11 @@ class NavBar extends Component {
     this.logout = this.logout.bind(this)
   }
   state = {
-    loggedIn: (localStorage.getItem('AUTH_TOKEN') !== null) ? true: false
+    loggedIn: (sessionStorage.getItem('AUTH_TOKEN') !== null) ? true: false
   }
   logout() {
-    localStorage.removeItem('AUTH_TOKEN');
-    localStorage.clear();
+    sessionStorage.removeItem('AUTH_TOKEN');
+    sessionStorage.clear();
     this.setState({ loggedIn: false });
     this.props.history.push('/');
   };
